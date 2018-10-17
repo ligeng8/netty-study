@@ -19,13 +19,13 @@ public final class SubscribeReqProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 subReqId = 1;</code>
+     * <code>required int32 subReqID = 1;</code>
      */
-    boolean hasSubReqId();
+    boolean hasSubReqID();
     /**
-     * <code>required int32 subReqId = 1;</code>
+     * <code>required int32 subReqID = 1;</code>
      */
-    int getSubReqId();
+    int getSubReqID();
 
     /**
      * <code>required string userName = 2;</code>
@@ -56,20 +56,34 @@ public final class SubscribeReqProto {
         getProductNameBytes();
 
     /**
-     * <code>repeated string address = 4;</code>
+     * <code>required string phoneNumber = 4;</code>
+     */
+    boolean hasPhoneNumber();
+    /**
+     * <code>required string phoneNumber = 4;</code>
+     */
+    java.lang.String getPhoneNumber();
+    /**
+     * <code>required string phoneNumber = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getPhoneNumberBytes();
+
+    /**
+     * <code>repeated string address = 5;</code>
      */
     java.util.List<java.lang.String>
         getAddressList();
     /**
-     * <code>repeated string address = 4;</code>
+     * <code>repeated string address = 5;</code>
      */
     int getAddressCount();
     /**
-     * <code>repeated string address = 4;</code>
+     * <code>repeated string address = 5;</code>
      */
     java.lang.String getAddress(int index);
     /**
-     * <code>repeated string address = 4;</code>
+     * <code>repeated string address = 5;</code>
      */
     com.google.protobuf.ByteString
         getAddressBytes(int index);
@@ -87,9 +101,10 @@ public final class SubscribeReqProto {
       super(builder);
     }
     private SubscribeReq() {
-      subReqId_ = 0;
+      subReqID_ = 0;
       userName_ = "";
       productName_ = "";
+      phoneNumber_ = "";
       address_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 
@@ -119,7 +134,7 @@ public final class SubscribeReqProto {
               break;
             case 8: {
               bitField0_ |= 0x00000001;
-              subReqId_ = input.readInt32();
+              subReqID_ = input.readInt32();
               break;
             }
             case 18: {
@@ -136,9 +151,15 @@ public final class SubscribeReqProto {
             }
             case 34: {
               com.google.protobuf.ByteString bs = input.readBytes();
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+              bitField0_ |= 0x00000008;
+              phoneNumber_ = bs;
+              break;
+            }
+            case 42: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
                 address_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000008;
+                mutable_bitField0_ |= 0x00000010;
               }
               address_.add(bs);
               break;
@@ -158,7 +179,7 @@ public final class SubscribeReqProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           address_ = address_.getUnmodifiableView();
         }
         this.unknownFields = unknownFields.build();
@@ -180,18 +201,18 @@ public final class SubscribeReqProto {
 
     private int bitField0_;
     public static final int SUBREQID_FIELD_NUMBER = 1;
-    private int subReqId_;
+    private int subReqID_;
     /**
-     * <code>required int32 subReqId = 1;</code>
+     * <code>required int32 subReqID = 1;</code>
      */
-    public boolean hasSubReqId() {
+    public boolean hasSubReqID() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 subReqId = 1;</code>
+     * <code>required int32 subReqID = 1;</code>
      */
-    public int getSubReqId() {
-      return subReqId_;
+    public int getSubReqID() {
+      return subReqID_;
     }
 
     public static final int USERNAME_FIELD_NUMBER = 2;
@@ -278,29 +299,71 @@ public final class SubscribeReqProto {
       }
     }
 
-    public static final int ADDRESS_FIELD_NUMBER = 4;
+    public static final int PHONENUMBER_FIELD_NUMBER = 4;
+    private volatile java.lang.Object phoneNumber_;
+    /**
+     * <code>required string phoneNumber = 4;</code>
+     */
+    public boolean hasPhoneNumber() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required string phoneNumber = 4;</code>
+     */
+    public java.lang.String getPhoneNumber() {
+      java.lang.Object ref = phoneNumber_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          phoneNumber_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string phoneNumber = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPhoneNumberBytes() {
+      java.lang.Object ref = phoneNumber_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        phoneNumber_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ADDRESS_FIELD_NUMBER = 5;
     private com.google.protobuf.LazyStringList address_;
     /**
-     * <code>repeated string address = 4;</code>
+     * <code>repeated string address = 5;</code>
      */
     public com.google.protobuf.ProtocolStringList
         getAddressList() {
       return address_;
     }
     /**
-     * <code>repeated string address = 4;</code>
+     * <code>repeated string address = 5;</code>
      */
     public int getAddressCount() {
       return address_.size();
     }
     /**
-     * <code>repeated string address = 4;</code>
+     * <code>repeated string address = 5;</code>
      */
     public java.lang.String getAddress(int index) {
       return address_.get(index);
     }
     /**
-     * <code>repeated string address = 4;</code>
+     * <code>repeated string address = 5;</code>
      */
     public com.google.protobuf.ByteString
         getAddressBytes(int index) {
@@ -314,7 +377,7 @@ public final class SubscribeReqProto {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasSubReqId()) {
+      if (!hasSubReqID()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -326,6 +389,10 @@ public final class SubscribeReqProto {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasPhoneNumber()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -334,7 +401,7 @@ public final class SubscribeReqProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, subReqId_);
+        output.writeInt32(1, subReqID_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, userName_);
@@ -342,8 +409,11 @@ public final class SubscribeReqProto {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, productName_);
       }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, phoneNumber_);
+      }
       for (int i = 0; i < address_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, address_.getRaw(i));
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, address_.getRaw(i));
       }
       unknownFields.writeTo(output);
     }
@@ -356,13 +426,16 @@ public final class SubscribeReqProto {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, subReqId_);
+          .computeInt32Size(1, subReqID_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, userName_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, productName_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, phoneNumber_);
       }
       {
         int dataSize = 0;
@@ -388,10 +461,10 @@ public final class SubscribeReqProto {
       com.it.netty.xuliehua.googleprotobuf.SubscribeReqProto.SubscribeReq other = (com.it.netty.xuliehua.googleprotobuf.SubscribeReqProto.SubscribeReq) obj;
 
       boolean result = true;
-      result = result && (hasSubReqId() == other.hasSubReqId());
-      if (hasSubReqId()) {
-        result = result && (getSubReqId()
-            == other.getSubReqId());
+      result = result && (hasSubReqID() == other.hasSubReqID());
+      if (hasSubReqID()) {
+        result = result && (getSubReqID()
+            == other.getSubReqID());
       }
       result = result && (hasUserName() == other.hasUserName());
       if (hasUserName()) {
@@ -402,6 +475,11 @@ public final class SubscribeReqProto {
       if (hasProductName()) {
         result = result && getProductName()
             .equals(other.getProductName());
+      }
+      result = result && (hasPhoneNumber() == other.hasPhoneNumber());
+      if (hasPhoneNumber()) {
+        result = result && getPhoneNumber()
+            .equals(other.getPhoneNumber());
       }
       result = result && getAddressList()
           .equals(other.getAddressList());
@@ -416,9 +494,9 @@ public final class SubscribeReqProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasSubReqId()) {
+      if (hasSubReqID()) {
         hash = (37 * hash) + SUBREQID_FIELD_NUMBER;
-        hash = (53 * hash) + getSubReqId();
+        hash = (53 * hash) + getSubReqID();
       }
       if (hasUserName()) {
         hash = (37 * hash) + USERNAME_FIELD_NUMBER;
@@ -427,6 +505,10 @@ public final class SubscribeReqProto {
       if (hasProductName()) {
         hash = (37 * hash) + PRODUCTNAME_FIELD_NUMBER;
         hash = (53 * hash) + getProductName().hashCode();
+      }
+      if (hasPhoneNumber()) {
+        hash = (37 * hash) + PHONENUMBER_FIELD_NUMBER;
+        hash = (53 * hash) + getPhoneNumber().hashCode();
       }
       if (getAddressCount() > 0) {
         hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
@@ -565,14 +647,16 @@ public final class SubscribeReqProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        subReqId_ = 0;
+        subReqID_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
         userName_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
         productName_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
-        address_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        phoneNumber_ = "";
         bitField0_ = (bitField0_ & ~0x00000008);
+        address_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -604,7 +688,7 @@ public final class SubscribeReqProto {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.subReqId_ = subReqId_;
+        result.subReqID_ = subReqID_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -613,9 +697,13 @@ public final class SubscribeReqProto {
           to_bitField0_ |= 0x00000004;
         }
         result.productName_ = productName_;
-        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.phoneNumber_ = phoneNumber_;
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
           address_ = address_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000010);
         }
         result.address_ = address_;
         result.bitField0_ = to_bitField0_;
@@ -667,8 +755,8 @@ public final class SubscribeReqProto {
 
       public Builder mergeFrom(com.it.netty.xuliehua.googleprotobuf.SubscribeReqProto.SubscribeReq other) {
         if (other == com.it.netty.xuliehua.googleprotobuf.SubscribeReqProto.SubscribeReq.getDefaultInstance()) return this;
-        if (other.hasSubReqId()) {
-          setSubReqId(other.getSubReqId());
+        if (other.hasSubReqID()) {
+          setSubReqID(other.getSubReqID());
         }
         if (other.hasUserName()) {
           bitField0_ |= 0x00000002;
@@ -680,10 +768,15 @@ public final class SubscribeReqProto {
           productName_ = other.productName_;
           onChanged();
         }
+        if (other.hasPhoneNumber()) {
+          bitField0_ |= 0x00000008;
+          phoneNumber_ = other.phoneNumber_;
+          onChanged();
+        }
         if (!other.address_.isEmpty()) {
           if (address_.isEmpty()) {
             address_ = other.address_;
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000010);
           } else {
             ensureAddressIsMutable();
             address_.addAll(other.address_);
@@ -697,13 +790,16 @@ public final class SubscribeReqProto {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasSubReqId()) {
+        if (!hasSubReqID()) {
           return false;
         }
         if (!hasUserName()) {
           return false;
         }
         if (!hasProductName()) {
+          return false;
+        }
+        if (!hasPhoneNumber()) {
           return false;
         }
         return true;
@@ -729,34 +825,34 @@ public final class SubscribeReqProto {
       }
       private int bitField0_;
 
-      private int subReqId_ ;
+      private int subReqID_ ;
       /**
-       * <code>required int32 subReqId = 1;</code>
+       * <code>required int32 subReqID = 1;</code>
        */
-      public boolean hasSubReqId() {
+      public boolean hasSubReqID() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 subReqId = 1;</code>
+       * <code>required int32 subReqID = 1;</code>
        */
-      public int getSubReqId() {
-        return subReqId_;
+      public int getSubReqID() {
+        return subReqID_;
       }
       /**
-       * <code>required int32 subReqId = 1;</code>
+       * <code>required int32 subReqID = 1;</code>
        */
-      public Builder setSubReqId(int value) {
+      public Builder setSubReqID(int value) {
         bitField0_ |= 0x00000001;
-        subReqId_ = value;
+        subReqID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 subReqId = 1;</code>
+       * <code>required int32 subReqID = 1;</code>
        */
-      public Builder clearSubReqId() {
+      public Builder clearSubReqID() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        subReqId_ = 0;
+        subReqID_ = 0;
         onChanged();
         return this;
       }
@@ -913,41 +1009,117 @@ public final class SubscribeReqProto {
         return this;
       }
 
+      private java.lang.Object phoneNumber_ = "";
+      /**
+       * <code>required string phoneNumber = 4;</code>
+       */
+      public boolean hasPhoneNumber() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required string phoneNumber = 4;</code>
+       */
+      public java.lang.String getPhoneNumber() {
+        java.lang.Object ref = phoneNumber_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            phoneNumber_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string phoneNumber = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPhoneNumberBytes() {
+        java.lang.Object ref = phoneNumber_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          phoneNumber_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string phoneNumber = 4;</code>
+       */
+      public Builder setPhoneNumber(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        phoneNumber_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string phoneNumber = 4;</code>
+       */
+      public Builder clearPhoneNumber() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        phoneNumber_ = getDefaultInstance().getPhoneNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string phoneNumber = 4;</code>
+       */
+      public Builder setPhoneNumberBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        phoneNumber_ = value;
+        onChanged();
+        return this;
+      }
+
       private com.google.protobuf.LazyStringList address_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       private void ensureAddressIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
           address_ = new com.google.protobuf.LazyStringArrayList(address_);
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000010;
          }
       }
       /**
-       * <code>repeated string address = 4;</code>
+       * <code>repeated string address = 5;</code>
        */
       public com.google.protobuf.ProtocolStringList
           getAddressList() {
         return address_.getUnmodifiableView();
       }
       /**
-       * <code>repeated string address = 4;</code>
+       * <code>repeated string address = 5;</code>
        */
       public int getAddressCount() {
         return address_.size();
       }
       /**
-       * <code>repeated string address = 4;</code>
+       * <code>repeated string address = 5;</code>
        */
       public java.lang.String getAddress(int index) {
         return address_.get(index);
       }
       /**
-       * <code>repeated string address = 4;</code>
+       * <code>repeated string address = 5;</code>
        */
       public com.google.protobuf.ByteString
           getAddressBytes(int index) {
         return address_.getByteString(index);
       }
       /**
-       * <code>repeated string address = 4;</code>
+       * <code>repeated string address = 5;</code>
        */
       public Builder setAddress(
           int index, java.lang.String value) {
@@ -960,7 +1132,7 @@ public final class SubscribeReqProto {
         return this;
       }
       /**
-       * <code>repeated string address = 4;</code>
+       * <code>repeated string address = 5;</code>
        */
       public Builder addAddress(
           java.lang.String value) {
@@ -973,7 +1145,7 @@ public final class SubscribeReqProto {
         return this;
       }
       /**
-       * <code>repeated string address = 4;</code>
+       * <code>repeated string address = 5;</code>
        */
       public Builder addAllAddress(
           java.lang.Iterable<java.lang.String> values) {
@@ -984,16 +1156,16 @@ public final class SubscribeReqProto {
         return this;
       }
       /**
-       * <code>repeated string address = 4;</code>
+       * <code>repeated string address = 5;</code>
        */
       public Builder clearAddress() {
         address_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         onChanged();
         return this;
       }
       /**
-       * <code>repeated string address = 4;</code>
+       * <code>repeated string address = 5;</code>
        */
       public Builder addAddressBytes(
           com.google.protobuf.ByteString value) {
@@ -1072,11 +1244,11 @@ public final class SubscribeReqProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\022SubscribeReq.proto\"X\n\014SubscribeReq\022\020\n\010" +
-      "subReqId\030\001 \002(\005\022\020\n\010userName\030\002 \002(\t\022\023\n\013prod" +
-      "uctName\030\003 \002(\t\022\017\n\007address\030\004 \003(\tB9\n$com.it" +
-      ".netty.xuliehua.googleprotobufB\021Subscrib" +
-      "eReqProto"
+      "\n\022SubscribeReq.proto\"m\n\014SubscribeReq\022\020\n\010" +
+      "subReqID\030\001 \002(\005\022\020\n\010userName\030\002 \002(\t\022\023\n\013prod" +
+      "uctName\030\003 \002(\t\022\023\n\013phoneNumber\030\004 \002(\t\022\017\n\007ad" +
+      "dress\030\005 \003(\tB9\n$com.it.netty.xuliehua.goo" +
+      "gleprotobufB\021SubscribeReqProto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1095,7 +1267,7 @@ public final class SubscribeReqProto {
     internal_static_SubscribeReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SubscribeReq_descriptor,
-        new java.lang.String[] { "SubReqId", "UserName", "ProductName", "Address", });
+        new java.lang.String[] { "SubReqID", "UserName", "ProductName", "PhoneNumber", "Address", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
