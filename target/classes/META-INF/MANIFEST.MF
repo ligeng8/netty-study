@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Built-By: ligeng3
+Class-Path: conf/ lib/netty-all-5.0.0.Alpha1.jar lib/protobuf-java-3.6
+ .0.jar
+Build-Jdk: 1.8.0_131
+Created-By: Maven Integration for Eclipse
+Main-Class: com.boco.Application
+
