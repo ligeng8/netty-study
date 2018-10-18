@@ -11,7 +11,13 @@ import io.netty.handler.codec.marshalling.MarshallingEncoder;
 
 public class MarShallingCodecFactory {
 
+	
+	public static void main(String[] args) {
+		MarShallingCodecFactory.buildMarshallingDecoder();
+		MarshallerFactory marshallerFactory = Marshalling.getMarshallerFactory("serial", Marshalling.class.getClassLoader());
+	}
 	public static MarshallingDecoder buildMarshallingDecoder() {
+		
 		MarshallerFactory marshallerFactory = Marshalling.getProvidedMarshallerFactory("serial");
 		MarshallingConfiguration configuration = new MarshallingConfiguration();
 		configuration.setVersion(5);
@@ -24,7 +30,7 @@ public class MarShallingCodecFactory {
 	public static MarshallingEncoder buildMarshallingEncoder() {
 
 		MarshallerFactory marshallerFactory = Marshalling.getProvidedMarshallerFactory("serial");
-
+//                          new SerialProviderDescriptor()
 		MarshallingConfiguration marshallingConfiguration = new MarshallingConfiguration();
 		marshallingConfiguration.setVersion(5);
 		DefaultMarshallerProvider marshallerProvider = new DefaultMarshallerProvider(marshallerFactory,
