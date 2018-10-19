@@ -3,6 +3,10 @@ package com.it.netty.xuliehua.bean;
 import java.io.Serializable;
 
 public class SubscribeReq implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6057032652294679322L;
 	private Integer subReqID;
 	private String userName;
 
