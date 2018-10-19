@@ -26,12 +26,12 @@ import io.netty.handler.codec.http.LastHttpContent;
 import io.netty.handler.stream.ChunkedFile;
 import io.netty.util.CharsetUtil;
 
-public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
+public class HttpFileServerHandler2 extends SimpleChannelInboundHandler<FullHttpRequest> {
  
 	private  String   url  ;
 	
 	
-	public HttpFileServerHandler(String url) {
+	public HttpFileServerHandler2(String url) {
 		this.url = url;
 	}
 
@@ -86,30 +86,15 @@ public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpR
 		    defaultFullHttpResponse.headers().set(HttpHeaders.Names.CONTENT_LENGTH, fileLength);
 		    MimetypesFileTypeMap mimetypesFileTypeMap = new MimetypesFileTypeMap();
 		    defaultFullHttpResponse.headers().set(HttpHeaders.Names.CONTENT_TYPE, mimetypesFileTypeMap.getContentType(file));
+//		    defaultFullHttpResponse.headers().set(HttpHeaders.Names.CONTENT_TYPE, "text/html;charset=UTF-8");
 		    defaultFullHttpResponse.headers().set("Content-Disposition", "attachment; filename="+file.getName());
-		    if(request.headers().get(HttpHeaders.Names.CONNECTION).equals( HttpHeaders.Values.KEEP_ALIVE.toString())) {
-		    	defaultFullHttpResponse.headers().set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.KEEP_ALIVE);
-		    }
+//		    if(request.headers().get(HttpHeaders.Names.CONNECTION).equals( HttpHeaders.Values.KEEP_ALIVE.toString())) {
+//		    	defaultFullHttpResponse.headers().set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.KEEP_ALIVE);
+//		    }
+		    defaultFullHttpResponse.content().writeBytes(b);
 		    ctx.write(defaultFullHttpResponse);
-		    ChannelFuture sendFileFuture =    ctx.writeAndFlush(new ChunkedFile(randomAccessFile,0,fileLength,8192),ctx.newProgressivePromise());
 		    ChannelFuture channelFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT);
-		    sendFileFuture.addListener(new ChannelProgressiveFutureListener() {
-		    	@Override
-				public void operationProgressed(ChannelProgressiveFuture future, long progress, long total) throws Exception {
-					// TODO Auto-generated method stub
-					   if(total <0) {
-						   System.err.println("Transfer progress: "+ progress);
-					   }else {
-						    System.err.println("Transfer progress: "+ progress +"/"+total);
-					   }
-				}
-				@Override
-				public void operationComplete(ChannelProgressiveFuture future) throws Exception {
-					// TODO Auto-generated method stub
-					System.out.println("Transfer progress Complete");
-				}
-			});
-		    if(!(request.headers().get(HttpHeaders.Names.CONNECTION).equals( HttpHeaders.Values.KEEP_ALIVE.toString()))) {
+		    if(!request.headers().get(HttpHeaders.Names.CONNECTION).equals( HttpHeaders.Values.KEEP_ALIVE.toString())) {
 		    	channelFuture.addListener(ChannelFutureListener.CLOSE);
 		    }
 		    
