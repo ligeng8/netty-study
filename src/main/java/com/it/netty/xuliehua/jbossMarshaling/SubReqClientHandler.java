@@ -32,7 +32,8 @@ public class SubReqClientHandler extends ChannelHandlerAdapter {
 		// TODO Auto-generated method stub
 		SubscribeResp subscribeResp = (SubscribeResp) msg;
 		System.out.println(subscribeResp);
-		ctx.write("successful;");
+		ctx.close();
+//		ctx.write("successful;");
 	}
 	public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
 		ctx.flush();

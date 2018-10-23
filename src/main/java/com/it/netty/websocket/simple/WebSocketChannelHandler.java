@@ -1,4 +1,4 @@
-package com.it.netty.websocket;
+package com.it.netty.websocket.simple;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
@@ -17,4 +17,5 @@ public class WebSocketChannelHandler extends ChannelInitializer<SocketChannel>{
 		e.pipeline().addLast("handler", new MyWebSocketHandler());
 	}
 
+	
 }

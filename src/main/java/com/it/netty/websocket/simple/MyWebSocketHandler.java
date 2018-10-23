@@ -1,4 +1,4 @@
-package com.it.netty.websocket;
+package com.it.netty.websocket.simple;
 
 import java.util.Date;
 
@@ -41,7 +41,6 @@ public class MyWebSocketHandler extends SimpleChannelInboundHandler<Object> {
 			handWebsocketFrame(ctx,(WebSocketFrame) msg);
 		}
 	}
-
 	/**
 	 * 处理客户端与服务端之间的websocket业务
 	 * 
