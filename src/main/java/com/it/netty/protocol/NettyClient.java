@@ -50,6 +50,7 @@ public class NettyClient {
 					});
 			ChannelFuture channelFuture = bootstrap
 					.connect(new InetSocketAddress(ip, port), new InetSocketAddress("127.0.0.1", 8888)).sync();
+			count = 0;
 			channelFuture.channel().closeFuture().sync();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
