@@ -1,4 +1,4 @@
-package com.it.netty.xuliehua.jbossMarshaling;
+package com.it.netty.protocol.common;
 
 import org.jboss.marshalling.MarshallerFactory;
 import org.jboss.marshalling.Marshalling;
